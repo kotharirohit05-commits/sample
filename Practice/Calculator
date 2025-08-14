@@ -1,0 +1,69 @@
+
+class DivisionByZeroException extends Exception{
+
+    DivisionByZeroException(String message){
+
+        super(message);
+
+    }
+
+}
+
+class Calculator{
+
+    public int add(int number1 , int number2){
+
+        return number1+number2;
+
+    }
+
+    public int subtract(int number1 , int number2){
+
+        return number1 - number2;
+
+    }
+
+    public int multiply(int number1 , int number2){
+
+        return number1*number2;
+
+    }
+
+    public int divide(int number1 , int number2) throws DivisionByZeroException{
+
+        if(number2 == 0){
+
+            throw new DivisionByZeroException("Number can't be divided by zero");
+
+        }
+        return number1/number2;
+
+
+    }
+
+
+}
+
+public class Main {
+
+    public static void main(String[] args){
+
+
+        Calculator calc = new Calculator();
+        
+        try{
+
+            System.out.println(calc.add(10 , 10));
+            System.out.println(calc.divide(10 , 10));
+            System.out.println(calc.divide(90 , 10));
+            System.out.println(calc.divide(9 , 0));
+
+        }catch(DivisionByZeroException e){
+
+            System.out.println("Exception caught: " + e.getMessage());
+
+        }
+
+    }
+
+}

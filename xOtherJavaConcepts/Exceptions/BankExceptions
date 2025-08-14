@@ -1,0 +1,140 @@
+class insufficientFundsException extends Exception{
+
+    public insufficientFundsException(String message){
+
+        super(message);
+
+    }
+
+}
+
+class NegativeDepositError extends Exception{
+
+    NegativeDepositError(String message){
+
+        super(message);
+
+    }
+
+}
+
+class minimumWithdraw extends Exception{
+
+    minimumWithdraw(String message){
+
+        super(message);
+
+    }
+
+}
+
+class minimumDeposit extends Exception{
+
+    minimumDeposit(String message){
+
+        super(message);
+
+    }
+
+}
+
+class Bank{
+
+    private String id;
+    private String name;
+    private double balance;
+
+    Bank(String id , String name , double balance){
+
+        this.id = id;
+        this.name = name;
+        this.balance = balance;
+
+    }
+
+    double getBalance(){
+
+        System.out.println(balance);
+        return balance;
+
+    }
+
+    String getName(){
+
+        System.out.println(name);
+
+        return name;
+
+    }
+
+    String info(){
+
+        return "Name: " + name + ".\nAvailable balance: " + balance + ".";
+
+    }
+
+
+
+    void deposit(double money) throws minimumDeposit , NegativeDepositError {
+
+        if(money < 0){
+
+            throw new NegativeDepositError("You cant deposit Negative Money");
+
+        }
+
+        if(money < 1000){
+
+            throw new minimumDeposit("Minimum Deposit is 1000 Rupees");
+
+        }
+
+        this.balance = balance + money; 
+
+    }
+
+    void withdraw(double money) throws insufficientFundsException, minimumWithdraw {
+
+        if(money > balance){
+
+            throw new insufficientFundsException("Insufficient Funds");
+
+        }
+
+        if(money < 100){
+            throw new minimumWithdraw("Minimum withdraw is 100 rupees");
+        }
+
+        this.balance = balance - money;
+
+    }
+
+
+
+
+}
+
+public class Main {
+
+    public static void main(String[] args) throws insufficientFundsException {
+
+
+        Bank acc = new Bank("101" , "Uday Raj" , 1000);
+
+
+        try{
+            acc.withdraw(100);
+            acc.deposit(1000);
+            acc.withdraw(10);
+
+
+        }catch (NegativeDepositError  | minimumDeposit | insufficientFundsException | minimumWithdraw e){
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println(acc.info());
+
+
+    }
+
+}

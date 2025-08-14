@@ -1,0 +1,43 @@
+public class ExceptionExample{
+
+    public static void main(String[] args) {
+
+
+        //ArithmeticException try-catch block
+        try{
+
+            int ans = 50/0;
+            System.out.println(ans);
+
+
+        }catch(ArithmeticException e){
+
+            System.out.println("Error occurred : " + e);
+
+        }finally{
+
+            System.out.println("Finnally is executed regardless");
+
+        }
+//---------------------------------------------------------------------------------------
+        int[] arr = {1, 2, 3, 4, 5, 6, 7};
+        //ArrayIndexOutOfBoundsException handling
+        try{
+            int num = arr[7];
+            System.out.println(num);
+        }catch(ArrayIndexOutOfBoundsException error){
+
+            System.out.println("Error:" + error);
+
+        }finally {
+            int sum = 0;
+
+            for(int i = 0 ; i < arr.length ; i++){
+                sum = sum + arr[i];
+            }
+        }
+
+
+    }
+
+}

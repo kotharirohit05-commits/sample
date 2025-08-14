@@ -1,0 +1,121 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Book{
+
+    String title;
+    String author;
+    int id;
+
+    Book(String title , String author , int id){
+
+        this.title = title;
+        this.author = author;
+        this.id = id;
+
+    }
+
+    void info(){
+
+        System.out.println("Title: " + title + "\nAuthor: " + author + "\nId: "+ id);
+
+    }
+
+}
+
+class Library{
+
+    List<Book> booksList = new ArrayList<>();
+
+    void addBook(Book book){
+
+        booksList.add(book);
+
+    }
+
+    boolean noBookAvailable(){
+
+        if(booksList.isEmpty()){
+            return true;
+        }
+        return false;
+
+    }
+
+    void deleteBook(int id){
+
+        if(noBookAvailable()){
+            System.out.println("Library is Empty");
+            return;
+        }
+        boolean bookFound = false;
+
+        for(Book book : booksList){
+
+            if(book.id == id){
+                booksList.remove(book);
+                bookFound = true;
+                break;
+            }
+
+        }
+
+        if(bookFound){
+
+            System.out.println("Book Deleted from Library");
+
+        }else{
+
+            System.out.println("No Book found");
+
+        }
+
+    }
+
+    void displayBooks(){
+
+        if(noBookAvailable()){
+            System.out.println("Library is Empty");
+            return;
+        }
+
+        for(Book book : booksList){
+
+            book.info();
+
+        }
+
+    }
+
+
+}
+
+public class Main{
+
+    public static void main(String[] args) {
+
+        List<Book> books = new ArrayList<>();
+
+        books.add(new Book("Despair in Grave" , "Ashika Sharma" , 1));
+        books.add(new Book("King of the sloth" , "Ana Huang" , 2));
+        books.add(new Book("Reverse Insanity" , "Zhau Di" , 3));
+
+        Library lib = new Library();
+
+        for(Book book : books){
+
+            lib.addBook(book);
+
+        }
+
+
+        lib.displayBooks();
+
+
+
+
+
+
+    }
+
+}

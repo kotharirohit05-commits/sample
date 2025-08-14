@@ -1,0 +1,41 @@
+class Animal{
+    public void eat(){
+        System.out.println("The animal is Eating");
+    }
+    public void sad(){
+        System.out.println("The animal is Sad");
+    }
+    
+
+}
+
+class Dog extends Animal{
+
+    void bark(){ //new method can we defined which is not present in the parent class
+        System.out.println("Bow-Bow");
+
+    }
+    void cute(){
+        System.out.println("The dog is making cute face");
+    }
+}
+
+class Cat extends Animal{
+
+    void meow(){
+        System.out.println("Meow-Meow");
+    }
+}
+
+public class Main{
+    public static void main(String[] args) {
+
+        Cat cat = new Cat();
+        Dog dog = new Dog();
+
+        cat.meow();
+        dog.bark();
+
+
+    }
+}

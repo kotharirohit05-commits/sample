@@ -1,0 +1,41 @@
+abstract class Animal{
+ 
+    public void eat(){
+        System.out.println("The animal is eating");
+    }
+    public void legs(){
+
+        System.out.println("This category of Animals have 4 legs");
+    }
+
+    abstract void makeSound();
+    abstract void follow();
+
+
+}
+
+
+class Dog extends Animal{
+
+    void makeSound(){
+        System.out.println("Dog is Making sound");
+    }
+
+    void follow() {
+        System.out.println("The dog is following");
+    }
+
+
+}
+
+public class Main{
+    public static void main(String[] args) {
+
+        Animal dog = new Dog();
+
+        dog.makeSound();
+        dog.eat();
+        dog.follow();
+        dog.legs();
+    }
+}

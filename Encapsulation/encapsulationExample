@@ -1,0 +1,47 @@
+
+
+class Car{
+    private int wheels;
+    private String model;
+    private final int doors;
+
+    public Car(String model , int wheels , int doors){
+        this.model = model;
+        this.wheels = wheels;
+        this.doors = doors;
+    }
+
+    public String getDetails(){
+        return "The model is " + model + ". " + "It has "+wheels + " wheels and " + doors + " doors";
+    }
+    public void setModel(String model){
+        this.model = model;
+
+    }
+    public String getModel(){
+        return model;
+    }
+
+    public void setWheels(int wheels){
+        this.wheels = wheels;
+    }
+    public int getWheels(){
+        return wheels;
+    }
+
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Car car = new Car("zen" , 2 , 4);
+        car.setModel("Zeno");
+        car.setWheels(6);
+        System.out.println(car.getDetails());
+
+
+
+
+
+    }
+}
